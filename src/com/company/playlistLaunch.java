@@ -68,4 +68,36 @@ public class playlistLaunch {
 
         return menu;
     }
+
+    public static void play(List<Song> playlist) {
+
+
+
+        Scanner scanner= new Scanner(System.in);
+        System.out.println("Write --Order-- to listen the playlist in order");
+        System.out.println("Write --Random-- to listen the playlist in a random order");
+        String userInput = scanner.next();
+        boolean forward = true;
+        boolean isQuit = false;
+
+        if (playlist.isEmpty()){
+            System.out.println("No song in this playlist");
+            return;
+        }
+        else if (userInput.toLowerCase().equals("order") || userInput.toLowerCase().equals("o")){
+            System.out.println("Now playing " );
+
+        } else if (userInput.toLowerCase().equals("random") || userInput.toLowerCase().equals("r")){
+            int indexSong = randomSong(playlist);
+            System.out.println("Now playing " );
+        }
+    }
+
+    private static int randomSong(List<Song> playlist) {
+        double d =Math.random();
+        int n = (int)d;
+
+        n = (int)(Math.random() * playlist.size());
+        return n ;
+    }
 }

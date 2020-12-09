@@ -8,6 +8,7 @@ public class Main {
 
     public static String menu = "m";
 
+    public static List<Playlist> listePlaylist = new ArrayList<>();
     public static void main(String[] args) {
 
 

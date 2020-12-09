@@ -29,5 +29,14 @@ public class Playlist {
         System.out.println("Song added");
     }
 
+    public static void printAllPlaylist() {
+        for (int i = 0; i < Main.listePlaylist.size(); i++) {
+            String playlistName = Main.listePlaylist.get(i).getPlaylistName();
+            System.out.println(playlistName);
+        }
+    }
+
+
+
 
 }

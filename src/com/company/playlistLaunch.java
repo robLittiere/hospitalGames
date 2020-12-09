@@ -27,6 +27,8 @@ public class playlistLaunch {
                         System.out.println("Enter the name of your first playlist ");
                         String playlistName = Menu.scanEntry();
                         Playlist playlist1 = new Playlist(playlistName);
+
+                        //Add playlist to the list of playlist
                         Main.listePlaylist.add(playlist1);
                         System.out.println("You can write --add-- to add a song to your playlist or write --quit-- to go back to the main menu");
 
@@ -45,9 +47,14 @@ public class playlistLaunch {
 
                     else{
                         System.out.println("Here are your playlists");
+                        Playlist.printAllPlaylist();
+
+
+                        System.out.println();
+                        System.out.println();
                         System.out.println("Enter --play-- to listen to one your playlists");
                         System.out.println("Enter --manage-- to start managing your playlists");
-                        System.out.println("Enter --quit-- to go back to the maine menu");
+                        System.out.println("Enter --quit-- to go back to the main menu");
 
                         if (choice.equals("quit") || choice.equals("q")) {
                             menu = "m";
@@ -55,6 +62,8 @@ public class playlistLaunch {
                         }
                         else if (choice.equals("play") || choice.equals("p")) {
                                 //Start playing a song
+
+
                             }
                         else if (choice.equals("manage") || choice.equals("m")) {
                             //Start managing playlists

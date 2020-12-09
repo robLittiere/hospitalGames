@@ -27,6 +27,9 @@ public class playlistLaunch {
                         System.out.println("Enter the name of your first playlist ");
                         String playlistName = Menu.scanEntry();
                         Playlist playlist1 = new Playlist(playlistName);
+
+                        //Add playlist to the list of playlist
+                        Main.listePlaylist.add(playlist1);
                         System.out.println("You can write --add-- to add a song to your playlist or write --quit-- to go back to the main menu");
 
                         String userInput = Menu.scanEntry();
@@ -35,26 +38,46 @@ public class playlistLaunch {
                             break;
                         }
 
-                        else if (userInput.equals("enter") || userInput.equals("e")){
-                            System.out.println("Alrighty, write the name of the song you want to add");
-                            String songName = Menu.scanEntry();
-                            System.out.println("Now, write which artist made the song");
-                            String songArtist = Menu.scanEntry();
-                            System.out.println("Finally, write the duration in seconds of the song");
-                            String songDuration = Menu.scanEntry();
-                            Song song = new Song(songArtist, songName, songDuration);
+                        else if (userInput.equals("add") || userInput.equals("a")){
+                            Song song = Song.createSong();
                             playlist1.addSongs(song);
+
+                        }
+                    }
+
+                    else{
+                        System.out.println("Here are your playlists");
+                        Playlist.printAllPlaylist();
+
+
+                        System.out.println();
+                        System.out.println();
+                        System.out.println("Enter --play-- to listen to one your playlists");
+                        System.out.println("Enter --manage-- to start managing your playlists");
+                        System.out.println("Enter --quit-- to go back to the main menu");
+
+                        if (choice.equals("quit") || choice.equals("q")) {
+                            menu = "m";
+                            break;
+                        }
+                        else if (choice.equals("play") || choice.equals("p")) {
+                                //Start playing a song
+
+
+                            }
+                        else if (choice.equals("manage") || choice.equals("m")) {
+                            //Start managing playlists
 
 
                         }
-
-
-
+                        break;
                     }
+                    break;
                 }
 
 
             }
+            break;
 
 
         }

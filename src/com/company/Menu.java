@@ -22,7 +22,7 @@ public class Menu {
 
 
         if (choice.toLowerCase().equals("playlist")|| choice.equals("p")  ){
-            playlistLaunch.playlistLaunch();
+            menu = playlistLaunch.playlistLaunch(menu);
             return menu;
 
         }
@@ -39,6 +39,13 @@ public class Menu {
         }
 
         return menu;
+
+    }
+
+
+    public static String scanEntry(){
+        Scanner sc = new Scanner(System.in);
+        return sc.next();
 
     }
 }

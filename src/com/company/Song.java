@@ -10,8 +10,8 @@ public class Song {
     private String songAuthorAsked;
 
     public Song(String author, String songName, String duration) {
-        this.author = author;
         this.songName = songName;
+        this.author = author;
         this.duration = duration;
     }
 

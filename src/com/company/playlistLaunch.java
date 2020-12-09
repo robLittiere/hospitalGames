@@ -2,10 +2,10 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Scanner;
 
 public class playlistLaunch {
-
 
 
 
@@ -56,13 +56,15 @@ public class playlistLaunch {
                         System.out.println("Enter --manage-- to start managing your playlists");
                         System.out.println("Enter --quit-- to go back to the main menu");
 
+                        choice = Menu.scanEntry();
+
                         if (choice.equals("quit") || choice.equals("q")) {
                             menu = "m";
                             break;
                         }
                         else if (choice.equals("play") || choice.equals("p")) {
                                 //Start playing a song
-
+                                play();
 
                             }
                         else if (choice.equals("manage") || choice.equals("m")) {
@@ -92,11 +94,34 @@ public class playlistLaunch {
         return menu;
     }
 
-    public static void play(List<Song> playlist) {
-
-
+    public static void play() {
+        List<Song> playlist = null;
 
         Scanner scanner= new Scanner(System.in);
+
+
+        while (true){
+            System.out.println();
+            System.out.println("Write the name of the playlist you want to listen");
+            String playlistName = scanner.next();
+            boolean playlistExist = false;
+
+            for (int i = 0; i < Main.listePlaylist.size(); i++) {
+                if (Main.listePlaylist.get(i).getPlaylistName().equals(playlistName)){
+                    playlistExist = true;
+                    playlist = Main.listePlaylist.get(i);
+                    break;
+                } else {
+                    playlistExist = false;
+                }
+            }
+            if (playlistExist == true){
+                break;
+            }  else {
+                System.out.println("This playlist do not exist");
+            }
+        }
+
         System.out.println("Write --Order-- to listen the playlist in order");
         System.out.println("Write --Random-- to listen the playlist in a random order");
         String userInput = scanner.next();

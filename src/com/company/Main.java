@@ -2,11 +2,13 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
+        int indexCurentSong;
         List<String> chansons = new ArrayList<>();
         chansons.add("la premier");
         chansons.add("la deuxieme");
@@ -28,7 +30,7 @@ public class Main {
             System.out.println(playlistJul.get(i).getSongName() + " de "  + playlistJul.get(i).getAuthor() + " dure  " + playlistJul.get(i).getDuration() );
         }
 
-h
+
 
     }
 }

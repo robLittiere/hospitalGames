@@ -6,30 +6,42 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static String menu = "m";
+
     public static void main(String[] args) {
-	// write your code here
-        int indexCurentSong;
-        List<String> chansons = new ArrayList<>();
-        chansons.add("la premier");
-        chansons.add("la deuxieme");
-        chansons.forEach(System.out::println);
-
-        Song song1 = new Song("jul", "byebye", "250");
-        Song song2 = new Song("jul", "byebye", "250");
-        List<Song> songs = new ArrayList<>();
-        songs.add(song1);
-        songs.add(song2);
-        Playlist playlist1 = new Playlist(songs, "JUlbest");
-        playlist1.printAllSongs();
 
 
-        List<Song> playlistJul = new ArrayList<>();
-        playlistJul.add(song1);
-        playlistJul.add(song2);
-        for (int i = 0; i < playlistJul.size(); i++) {
-            System.out.println(playlistJul.get(i).getSongName() + " de "  + playlistJul.get(i).getAuthor() + " dure  " + playlistJul.get(i).getDuration() );
+        while (menu != "q"){
+            menu = Menu.LaunchGame(menu);
         }
 
+
+
+
+
+
+        /*
+        Scanner sc = new Scanner(System.in);
+        String playlistName = sc.next();
+        Playlist playlist1 = new Playlist(playlistName);
+
+        System.out.println("Please indicate the name of the song");
+        String songName = sc.next();
+
+        System.out.println("Please indicate the author of the song");
+        String songAuthor = sc.next();
+
+        System.out.println("Please indicate the duration of the song");
+        String songDuration = sc.next();
+
+        Song song = new Song(songAuthor, songName, songDuration);
+        playlist1.addSongs(song);
+
+        for (int i = 0; i < playlist1.getSongs().size(); i++) {
+            System.out.println(playlist1.getSongs().get(i).getSongName() + " de "  + playlist1.getSongs().get(i).getAuthor() + " dure  " + playlist1.getSongs().get(i).getDuration() );
+        }
+
+         */
 
 
     }

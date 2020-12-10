@@ -38,11 +38,9 @@ public class playlistLaunch {
                             menu = "m";
                             break;
                         }
-
                         else if (userInput.equals("add") || userInput.equals("a")){
                             Song song = Song.createSong();
                             playlist1.addSongs(song);
-
                         }
                     }
 
@@ -51,6 +49,7 @@ public class playlistLaunch {
                         System.out.println("Here are your playlists");
                         System.out.println();
                         Playlist.printAllPlaylist();
+
                         System.out.println();
                         System.out.println("Enter --play-- to listen to one your playlists");
                         System.out.println("Enter --manage-- to start managing your playlists");
@@ -77,7 +76,6 @@ public class playlistLaunch {
                                 System.out.println("Enter --delete--to delete a playlist ");
                                 System.out.println("Enter --quit-- to go back to the main menu\n");
                                 System.out.println("|--------------------------------------------------------------------|");
-
 
                                 choice = Menu.scanEntry();
 
@@ -133,10 +131,7 @@ public class playlistLaunch {
                                                 System.out.println(songToDelete + " has been deleted from your playlist " + playlistUser.getPlaylistName());
                                             }
                                         }
-
-
                                     }
-
                                 } else if (choice.equals("create") || choice.equals("c")) {
                                     while (true) {
                                         System.out.println("|-------------------------------------------------------|\n");
@@ -194,29 +189,14 @@ public class playlistLaunch {
                                         System.out.println("Your playlist " + playlistName + " has been deleted");
                                     }
                                 }
-
                             }
-
                         }
-
                     }
                     break;
                 }
-
-
             }
             break;
-
-
         }
-
-
-
-
-
-
-
-
         return menu;
     }
 
@@ -224,12 +204,9 @@ public class playlistLaunch {
         Playlist playlist = null;
         List<Song> songs = null;
 
-
         Scanner scanner= new Scanner(System.in);
 
         int indexSong = 0;
-
-
 
         while (true){
             System.out.println();
@@ -264,7 +241,6 @@ public class playlistLaunch {
         String userInput = scanner.next();
             boolean isQuit = false;
             boolean random = false;
-
 
             if (playlist.isEmpty()){
                 System.out.println("No song in this playlist");
@@ -366,7 +342,6 @@ public class playlistLaunch {
             System.out.println();
         }
     }
-
 
     private static int randomSong(List<Song> songs) {
         Random rand = new Random();

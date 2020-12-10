@@ -31,7 +31,7 @@ public class Menu {
         }
 
         else if (choice.toLowerCase().equals("game")|| choice.equals("g")){
-            Game.gameLaunch();
+            menu = Game.gameLaunch();
             return menu;
         }
 

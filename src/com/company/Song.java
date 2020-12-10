@@ -27,7 +27,6 @@ public class Song {
         return duration;
     }
 
-
     public static Song createSong(){
         System.out.println("Alrighty, write the name of the song you want to add");
         String songName = Menu.scanEntry();

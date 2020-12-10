@@ -95,9 +95,10 @@ public class playlistLaunch {
     }
 
     public static void play() {
-        List<Song> playlist = null;
+        Playlist playlist = null;
 
         Scanner scanner= new Scanner(System.in);
+
 
 
         while (true){
@@ -121,6 +122,7 @@ public class playlistLaunch {
                 System.out.println("This playlist do not exist");
             }
         }
+        playlist.printAllSongs();
 
         System.out.println("Write --Order-- to listen the playlist in order");
         System.out.println("Write --Random-- to listen the playlist in a random order");
@@ -128,18 +130,21 @@ public class playlistLaunch {
         boolean forward = true;
         boolean isQuit = false;
 
+        ListIterator<Song> listIterator = playlist.listIterator();
+
         if (playlist.isEmpty()){
             System.out.println("No song in this playlist");
             return;
         }
         else if (userInput.toLowerCase().equals("order") || userInput.toLowerCase().equals("o")){
-            System.out.println("Now playing " );
+            System.out.println("Now playing " + playlist.listIterator());
 
         } else if (userInput.toLowerCase().equals("random") || userInput.toLowerCase().equals("r")){
             int indexSong = randomSong(playlist);
             System.out.println("Now playing " );
         }
     }
+
 
     private static int randomSong(List<Song> playlist) {
         double d =Math.random();

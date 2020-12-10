@@ -39,10 +39,17 @@ public class Playlist implements List<Song> {
     public void printAllSongs(){
         for (int i = 0; i < songs.size(); i++) {
             System.out.println("Song name : " + songs.get(i).getSongName());
-            System.out.println(" Artist : " + songs.get(i).getAuthor());
-            System.out.println("Duraiton : " + songs.get(i).getDuration());
+            System.out.println("Artist : " + songs.get(i).getAuthor());
+            System.out.println("Duration : " + songs.get(i).getDuration());
         }
     }
+    public void printCurrentSong(int indexSong){
+        System.out.println("Now playing : ");
+        System.out.println("Song name : " + songs.get(indexSong).getSongName());
+        System.out.println("Artist : " + songs.get(indexSong).getAuthor());
+        System.out.println("Duration : " + songs.get(indexSong).getDuration());
+
+}
 
     public static void printAllPlaylist() {
         for (int i = 0; i < Main.listePlaylist.size(); i++) {

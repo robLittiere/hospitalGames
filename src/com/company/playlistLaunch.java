@@ -97,7 +97,10 @@ public class playlistLaunch {
     public static void play() {
         Playlist playlist = null;
 
+
         Scanner scanner= new Scanner(System.in);
+
+        int indexSong = 0;
 
 
 
@@ -122,31 +125,94 @@ public class playlistLaunch {
                 System.out.println("This playlist do not exist");
             }
         }
-        playlist.printAllSongs();
+            playlist.printAllSongs();
 
-        System.out.println("Write --Order-- to listen the playlist in order");
-        System.out.println("Write --Random-- to listen the playlist in a random order");
-        String userInput = scanner.next();
-        boolean forward = true;
-        boolean isQuit = false;
+            System.out.println("Write --Order-- to listen the playlist in order");
+            System.out.println("Write --Random-- to listen the playlist in a random order");
+            String userInput = scanner.next();
+            boolean isQuit = false;
+            boolean random = false;
 
-        ListIterator<Song> listIterator = playlist.listIterator();
 
-        if (playlist.isEmpty()){
-            System.out.println("No song in this playlist");
-            return;
+            if (playlist.isEmpty()){
+                System.out.println("No song in this playlist");
+                return;
+            }
+            else if (userInput.toLowerCase().equals("order") || userInput.toLowerCase().equals("o")){
+                random = false;
+                indexSong = 0;
+                playlist.printCurrentSong(indexSong);
+                printMenuSong(random);
+
+            } else if (userInput.toLowerCase().equals("random") || userInput.toLowerCase().equals("r")){
+                random = true;
+                indexSong = randomSong(playlist);
+                playlist.printCurrentSong(indexSong);
+                printMenuSong(random);
+            }
+
+            while (!isQuit){
+                String choose = scanner.next();
+                scanner.nextLine();
+
+                if (choose.toLowerCase().equals("stop") || choose.toLowerCase().equals("s")){
+                    System.out.println("Playlist is done");
+                    isQuit = true;
+                    break;
+                }
+
+                if (choose.toLowerCase().equals("next") || choose.toLowerCase().equals("n")){
+                    if (random) {
+                        indexSong = randomSong(playlist);
+                        playlist.printCurrentSong(indexSong);
+                    } else if (!random && indexSong < playlist.size() - 1){
+                        indexSong++;
+                        playlist.printCurrentSong(indexSong);
+                    } else {
+                        System.out.println("We have reached the end of the playlist");
+                    }
+                }
+
+
+                if (choose.toLowerCase().equals("prev") || choose.toLowerCase().equals("p")){
+                    if (random) {
+                        indexSong = randomSong(playlist);
+                        playlist.printCurrentSong(indexSong);
+                    } else if (!random && indexSong > 0){
+                        indexSong--;
+                        playlist.printCurrentSong(indexSong);
+                    } else{
+                        System.out.println("We are at the start of the playlist");
+                    }
+                }
+
+                if (choose.toLowerCase().equals("replay") || choose.toLowerCase().equals("r")){
+                    playlist.printCurrentSong(indexSong);
+                }
+
+                if (choose.toLowerCase().equals("random")){
+                    random = true;
+                }
+
+                if (choose.toLowerCase().equals("order") || choose.toLowerCase().equals("o")){
+                    random = false;
+                }
+            }
         }
-        else if (userInput.toLowerCase().equals("order") || userInput.toLowerCase().equals("o")){
-            System.out.println("Now playing " + playlist.listIterator());
 
-        } else if (userInput.toLowerCase().equals("random") || userInput.toLowerCase().equals("r")){
-            int indexSong = randomSong(playlist);
-            System.out.println("Now playing " );
+    private static void printMenuSong(boolean random) {
+        System.out.println();
+        System.out.println("What you can do now : ");
+        if (!random){
+            System.out.println("--Stop--- to stop\n" + "--Next to play next song\n" + "--Prev-- to play previous song\n" + "--Replay-- to replay the current song\n" + "--Random-- to pass to random order");
+        }
+        if (random){
+            System.out.println("--Stop--- to stop\n" + "--Next to play next song\n" + "--Prev-- to play previous song\n" + "--Replay-- to replay the current song\n" + "--Order-- to pass to order");
         }
     }
 
 
-    private static int randomSong(List<Song> playlist) {
+    private static int randomSong(Playlist playlist) {
         double d =Math.random();
         int n = (int)d;
 

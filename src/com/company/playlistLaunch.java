@@ -315,7 +315,7 @@ public class playlistLaunch {
                 if (choose.toLowerCase().equals("random")){
                     random = true;
                     System.out.println("|-------------------------------|");
-                    System.out.println("Your now in random order");
+                    System.out.println("You are now in random order");
                     printMenuSong(random);
                     System.out.println("|-------------------------------|");
                 }
@@ -323,7 +323,7 @@ public class playlistLaunch {
                 if (choose.toLowerCase().equals("order") || choose.toLowerCase().equals("o")){
                     random = false;
                     System.out.println("|-------------------------------|");
-                    System.out.println(" Your now in the basic order ");
+                    System.out.println(" You are now in the basic order ");
                     printMenuSong(random);
                     System.out.println("|-------------------------------|");
                 }

@@ -101,7 +101,8 @@ public class Playlist implements List<Song> {
                 }
             }
             System.out.println("Your playlist was not found please retry");
-
+            Scanner scanner = new Scanner(System.in);
+            playlistName = scanner.next();
         }
 
     }

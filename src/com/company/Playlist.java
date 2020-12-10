@@ -29,18 +29,13 @@ public class Playlist implements List<Song> {
     }
 
 
-
-
-
-
-
-
-
     public void printAllSongs(){
         for (int i = 0; i < songs.size(); i++) {
+            System.out.println((i + 1) +  " : ");
             System.out.println("Song name : " + songs.get(i).getSongName());
             System.out.println("Artist : " + songs.get(i).getAuthor());
             System.out.println("Duration : " + songs.get(i).getDuration());
+            System.out.println();
         }
     }
     public void printCurrentSong(int indexSong){
@@ -62,28 +57,53 @@ public class Playlist implements List<Song> {
         Main.listePlaylist.remove(this);
     }
 
-    public void deleteSong(String songName){
-        for (int i = 0; i < songs.size(); i++) {
-            if (songs.get(i).getSongName() == songName){
-                songs.remove(songs.get(i));
-            }
-            else {
-                System.out.println("Sorry this song cannot be replaced");
+
+
+    public boolean deleteSong(String songName){
+        boolean songDeleted = false;
+        if (searchSong(songName) == true){
+            for (int i = 0; i < songs.size(); i++) {
+                if (songs.get(i).getSongName().equals(songName)){
+                    songs.remove(songs.get(i));
+                    songDeleted = true;
+
+                }
             }
         }
+        return songDeleted;
     }
 
     public void clearPlaylist(){
         songs.clear();
     }
 
-    public void searchSong(String songName){
+    public boolean searchSong(String songName){
+        boolean songExist = false;
         for (int i = 0; i < songs.size(); i++) {
-            if(songs.get(i).getSongName() == songName){
-                System.out.println("Yes this music is in your playlist, her index is : " + i);
+
+            if(songs.get(i).getSongName().equals(songName)){
+                songExist = true;
+
             }
-            else{
-                System.out.println("This music is not in your playlist");
+        }
+        return songExist;
+    }
+
+    public static Playlist findPlaylist(String playlistName) {
+        while (true) {
+            while (true) {
+                for (int i = 0; i < Main.listePlaylist.size(); i++) {
+                    if (Main.listePlaylist.get(i).getPlaylistName().equals(playlistName)) {
+                        Playlist playlist = Main.listePlaylist.get(i);
+                        return playlist;
+                    } else {
+                        System.out.println("Sorry, this playlist do not exist, please try again");
+                        System.out.println("Here are your playlists");
+                        Playlist.printAllPlaylist();
+                        playlistName = Menu.scanEntry();
+
+                    }
+                }
             }
         }
     }

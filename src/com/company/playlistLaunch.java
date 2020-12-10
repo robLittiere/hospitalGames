@@ -9,7 +9,7 @@ public class playlistLaunch {
 
 
 
-    public static String  playlistLaunch(String menu){
+    public static String playlistLaunch(String menu){
         while(true){
             System.out.println("Hi this is where you manage and listen to your playlist");
             System.out.println("Press --Enter-- to start listening to music");
@@ -71,6 +71,67 @@ public class playlistLaunch {
                             }
                         else if (choice.equals("manage") || choice.equals("m")) {
                             //Start managing playlists
+                            System.out.println("Enter --access-- to access a specific playlist and add or delete songs");
+                            System.out.println("Enter --create-- to create a playlist");
+                            System.out.println("Enter --clear-- to clear a playlist");
+                            System.out.println("Enter --delete--to delete a playlist ");
+
+                            choice = Menu.scanEntry();
+                            if(choice.equals("access") || choice.equals("a")){
+
+                                while(true){
+                                    System.out.println("Here you'll be able to add or delete songs");
+                                    System.out.println();
+                                    System.out.println("Here are your playlists");
+                                    System.out.println();
+                                    Playlist.printAllPlaylist();
+                                    System.out.println();
+
+                                    System.out.println("Enter the name of the playlist you wish to modify");
+                                    String playlistName = Menu.scanEntry();
+                                    Playlist playlistUser = Playlist.findPlaylist(playlistName);
+
+                                    System.out.println();
+                                    System.out.println("Very well, now enter --add-- or --delete-- to add or delete a song in " + playlistUser.getPlaylistName());
+                                    System.out.println("Enter --quit-- to go back to the previous menu");
+                                    choice = Menu.scanEntry();
+
+                                    if (choice.equals("quit") || choice.equals("q")){
+                                        break;
+
+                                    }
+
+                                    else if (choice.equals("add") || choice.equals("a")){
+                                        System.out.println("Let's add a song in " + playlistUser.getPlaylistName());
+                                        Song song = Song.createSong();
+                                        playlistUser.addSongs(song);
+                                        System.out.println();
+                                        System.out.println(song.getSongName() + " by " + song.getAuthor() + " has been added to " + playlistUser.getPlaylistName());
+
+                                    }
+
+                                    else if (choice.equals("delete") || choice.equals("d")){
+                                        System.out.println("Let's delete a song from " + playlistUser.getPlaylistName());
+                                        System.out.println();
+                                        System.out.println("Here are all the songs in " + playlistUser.getPlaylistName());
+                                        System.out.println();
+                                        playlistUser.printAllSongs();
+
+                                        System.out.println("Please indicate the title of the song you wish to delete");
+                                        String songToDelete = Menu.scanEntry();
+                                        if (playlistUser.deleteSong(songToDelete)){
+                                            System.out.println(songToDelete + " has been deleted from your playlist " + playlistUser.getPlaylistName());
+                                        }
+
+
+                                    }
+
+
+
+
+                                }
+
+                            }
 
 
                         }

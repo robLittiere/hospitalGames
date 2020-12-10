@@ -46,15 +46,17 @@ public class playlistLaunch {
                     }
 
                     else{
+                        System.out.println("|-------------------------------|");
                         System.out.println("Here are your playlists");
+                        System.out.println();
                         Playlist.printAllPlaylist();
 
 
                         System.out.println();
-                        System.out.println();
                         System.out.println("Enter --play-- to listen to one your playlists");
                         System.out.println("Enter --manage-- to start managing your playlists");
                         System.out.println("Enter --quit-- to go back to the main menu");
+                        System.out.println("|-------------------------------|");
 
                         choice = Menu.scanEntry();
 
@@ -105,8 +107,11 @@ public class playlistLaunch {
 
 
         while (true){
+            System.out.println("|-------------------------------|");
             System.out.println();
             System.out.println("Write the name of the playlist you want to listen");
+            System.out.println();
+            System.out.println("|-------------------------------|");
             String playlistName = scanner.next();
             boolean playlistExist = false;
 
@@ -125,11 +130,14 @@ public class playlistLaunch {
                 System.out.println("This playlist do not exist");
             }
         }
-            playlist.printAllSongs();
-
-            System.out.println("Write --Order-- to listen the playlist in order");
-            System.out.println("Write --Random-- to listen the playlist in a random order");
-            String userInput = scanner.next();
+        playlist.printAllSongs();
+        System.out.println("|-------------------------------|");
+        System.out.println();
+        System.out.println("Write --Order-- to listen the playlist in order");
+        System.out.println("Write --Random-- to listen the playlist in a random order");
+        System.out.println();
+        System.out.println("|-------------------------------|");
+        String userInput = scanner.next();
             boolean isQuit = false;
             boolean random = false;
 
@@ -164,38 +172,60 @@ public class playlistLaunch {
                 if (choose.toLowerCase().equals("next") || choose.toLowerCase().equals("n")){
                     if (random) {
                         indexSong = randomSong(playlist);
+                        System.out.println("|-------------------------------|");
+                        System.out.println();
                         playlist.printCurrentSong(indexSong);
                     } else if (!random && indexSong < playlist.size() - 1){
                         indexSong++;
+                        System.out.println("|-------------------------------|");
                         playlist.printCurrentSong(indexSong);
                     } else {
+                        System.out.println("|-------------------------------|");
                         System.out.println("We have reached the end of the playlist");
                     }
+                    printMenuSong(random);
+                    System.out.println("|-------------------------------|");
                 }
 
 
                 if (choose.toLowerCase().equals("prev") || choose.toLowerCase().equals("p")){
                     if (random) {
                         indexSong = randomSong(playlist);
+                        System.out.println("|-------------------------------|");
                         playlist.printCurrentSong(indexSong);
                     } else if (!random && indexSong > 0){
                         indexSong--;
+                        System.out.println("|-------------------------------|");
                         playlist.printCurrentSong(indexSong);
                     } else{
+                        System.out.println("|-------------------------------|");
                         System.out.println("We are at the start of the playlist");
                     }
+                    printMenuSong(random);
+                    System.out.println("|-------------------------------|");
                 }
 
                 if (choose.toLowerCase().equals("replay") || choose.toLowerCase().equals("r")){
+                    System.out.println("|-------------------------------|");
                     playlist.printCurrentSong(indexSong);
+                    printMenuSong(random);
+                    System.out.println("|-------------------------------|");
                 }
 
                 if (choose.toLowerCase().equals("random")){
                     random = true;
+                    System.out.println("|-------------------------------|");
+                    System.out.println("Your now in random order");
+                    printMenuSong(random);
+                    System.out.println("|-------------------------------|");
                 }
 
                 if (choose.toLowerCase().equals("order") || choose.toLowerCase().equals("o")){
                     random = false;
+                    System.out.println("|-------------------------------|");
+                    System.out.println(" Your now in the basic order ");
+                    printMenuSong(random);
+                    System.out.println("|-------------------------------|");
                 }
             }
         }
@@ -205,9 +235,11 @@ public class playlistLaunch {
         System.out.println("What you can do now : ");
         if (!random){
             System.out.println("--Stop--- to stop\n" + "--Next to play next song\n" + "--Prev-- to play previous song\n" + "--Replay-- to replay the current song\n" + "--Random-- to pass to random order");
+            System.out.println();
         }
         if (random){
             System.out.println("--Stop--- to stop\n" + "--Next to play next song\n" + "--Prev-- to play previous song\n" + "--Replay-- to replay the current song\n" + "--Order-- to pass to order");
+            System.out.println();
         }
     }
 

@@ -8,9 +8,13 @@ public class playlistLaunch {
 
     public static String playlistLaunch(String menu){
         while(true){
+            System.out.println("|-------------------------------------------------------------------------|");
+            System.out.println();
             System.out.println("Hi this is where you manage and listen to your playlist");
             System.out.println("Press --Enter-- to start listening to music");
             System.out.println("You can write --quit-- or --q-- to go back to the main menu if you want to");
+            System.out.println();
+            System.out.println("|-------------------------------------------------------------------------|");
             String choice = Menu.scanEntry();
             if (choice.equals("quit") || choice.equals("q")) {
                 menu = "m";
@@ -43,17 +47,15 @@ public class playlistLaunch {
                     }
 
                     else{
-                        System.out.println("|-------------------------------|");
+                        System.out.println("|------------------------------------------------|");
                         System.out.println("Here are your playlists");
                         System.out.println();
                         Playlist.printAllPlaylist();
-
-
                         System.out.println();
                         System.out.println("Enter --play-- to listen to one your playlists");
                         System.out.println("Enter --manage-- to start managing your playlists");
                         System.out.println("Enter --quit-- to go back to the main menu");
-                        System.out.println("|-------------------------------|");
+
 
                         choice = Menu.scanEntry();
 
@@ -68,11 +70,13 @@ public class playlistLaunch {
                             }
                         else if (choice.equals("manage") || choice.equals("m")) {
                             while (true) {     //Start managing playlists
+                                System.out.println("|--------------------------------------------------------------------|\n");
                                 System.out.println("Enter --access-- to access a specific playlist and add or delete songs");
                                 System.out.println("Enter --create-- to create a playlist");
                                 System.out.println("Enter --clear-- to clear a playlist");
                                 System.out.println("Enter --delete--to delete a playlist ");
-                                System.out.println("Enter --quit-- to go back to the main menu");
+                                System.out.println("Enter --quit-- to go back to the main menu\n");
+                                System.out.println("|--------------------------------------------------------------------|");
 
 
                                 choice = Menu.scanEntry();
@@ -84,6 +88,7 @@ public class playlistLaunch {
                                 else if (choice.equals("access") || choice.equals("a")) {
 
                                     while (true) {
+                                        System.out.println("|------------------------------------------------|\n");
                                         System.out.println("Here you'll be able to add or delete songs");
                                         System.out.println();
                                         System.out.println("Here are your playlists");
@@ -92,7 +97,8 @@ public class playlistLaunch {
                                         System.out.println();
 
                                         System.out.println("Enter the name of the playlist you wish to modify");
-                                        System.out.println("Enter --quit-- to go back to the previous menu");
+                                        System.out.println("Enter --quit-- to go back to the previous menu\n");
+                                        System.out.println("|------------------------------------------------|");
                                         String playlistName = Menu.scanEntry().toLowerCase();
                                         if (playlistName.equals("quit") || playlistName.equals("q")) {
                                             break;
@@ -133,10 +139,12 @@ public class playlistLaunch {
 
                                 } else if (choice.equals("create") || choice.equals("c")) {
                                     while (true) {
+                                        System.out.println("|-------------------------------------------------------|\n");
                                         System.out.println("Here you can create a playlist");
                                         System.out.println();
                                         System.out.println("Enter the name of your playlist ");
-                                        System.out.println("You can go back to the previous menu by entering --quit--");
+                                        System.out.println("You can go back to the previous menu by entering --quit--\n");
+                                        System.out.println("|-------------------------------------------------------|");
                                         String playlistName = Menu.scanEntry();
 
                                         if (playlistName.equals("quit") || playlistName.equals("q")) {
@@ -150,12 +158,14 @@ public class playlistLaunch {
                                     }
                                 } else if (choice.equals("clear") || choice.equals("cl")) {
                                     while(true) {
+                                        System.out.println("|-------------------------------------------------------|\n");
                                         System.out.println("Here are your playlists");
                                         System.out.println();
                                         Playlist.printAllPlaylist();
                                         System.out.println();
                                         System.out.println("You can enter the name of the playlist you wish to clear");
-                                        System.out.println("Or enter --quit-- to go back to the previous menu");
+                                        System.out.println("Or enter --quit-- to go back to the previous menu\n");
+                                        System.out.println("|-------------------------------------------------------|");
                                         String playlistName = Menu.scanEntry();
                                         if (playlistName.equals("quit") || playlistName.equals("q")) {
                                             break;
@@ -167,12 +177,14 @@ public class playlistLaunch {
 
                                 } else if (choice.equals("delete") || choice.equals("d")) {
                                     while(true) {
+                                        System.out.println("|------------------------------------------------|\n");
                                         System.out.println("Here are your playlists");
                                         System.out.println();
                                         Playlist.printAllPlaylist();
                                         System.out.println();
                                         System.out.println("Enter the name of the playlist you wish to delete");
-                                        System.out.println("Enter --quit-- to go back to the previous menu");
+                                        System.out.println("Enter --quit-- to go back to the previous menu\n");
+                                        System.out.println("|------------------------------------------------|");
                                         String playlistName = Menu.scanEntry();
                                         if(playlistName.equals("quit") || playlistName.equals("q")){
                                             break;
@@ -220,11 +232,9 @@ public class playlistLaunch {
 
 
         while (true){
-            System.out.println("|-------------------------------|");
             System.out.println();
             System.out.println("Write the name of the playlist you want to listen");
             System.out.println();
-            System.out.println("|-------------------------------|");
             String playlistName = scanner.next();
             boolean playlistExist = false;
 
@@ -319,7 +329,7 @@ public class playlistLaunch {
                     System.out.println("|-------------------------------|");
                 }
 
-                if (choose.toLowerCase().equals("replay") || choose.toLowerCase().equals("r")){
+                if (choose.toLowerCase().equals("again") || choose.toLowerCase().equals("a")){
                     System.out.println("|-------------------------------|");
                     playlist.printCurrentSong(indexSong);
                     printMenuSong(random);
@@ -348,11 +358,11 @@ public class playlistLaunch {
         System.out.println();
         System.out.println("What you can do now : ");
         if (!random){
-            System.out.println("--Stop--- to stop\n" + "--Next to play next song\n" + "--Prev-- to play previous song\n" + "--Replay-- to replay the current song\n" + "--Random-- to pass to random order");
+            System.out.println("--Stop--- to stop\n" + "--Next to play next song\n" + "--Prev-- to play previous song\n" + "--Again-- to replay the current song\n" + "--Random-- to pass to random order");
             System.out.println();
         }
         if (random){
-            System.out.println("--Stop--- to stop\n" + "--Next to play next song\n" + "--Prev-- to play previous song\n" + "--Replay-- to replay the current song\n" + "--Order-- to pass to order");
+            System.out.println("--Stop--- to stop\n" + "--Next to play next song\n" + "--Prev-- to play previous song\n" + "--Again-- to replay the current song\n" + "--Order-- to pass to order");
             System.out.println();
         }
     }

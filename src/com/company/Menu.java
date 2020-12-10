@@ -9,6 +9,8 @@ public class Menu {
 
     public static String LaunchGame(String menu){
 
+        System.out.println("|-------------------------------------------------------------------------------|");
+        System.out.println();
         System.out.println("Welcome to Hospital Games");
         System.out.println();
         System.out.println("Here you will be able to play a game called proutprout and listen to music");
@@ -17,6 +19,7 @@ public class Menu {
         System.out.println();
         System.out.println("You can also press --quit-- to quit the app");
         System.out.println();
+        System.out.println("|-------------------------------------------------------------------------------|");
         Scanner sc = new Scanner(System.in);
         String choice = sc.next();
 

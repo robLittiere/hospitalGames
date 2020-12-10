@@ -75,6 +75,7 @@ public class Playlist implements List<Song> {
 
     public void clearPlaylist(){
         songs.clear();
+
     }
 
     public boolean searchSong(String songName){
@@ -90,22 +91,19 @@ public class Playlist implements List<Song> {
     }
 
     public static Playlist findPlaylist(String playlistName) {
-        while (true) {
-            while (true) {
-                for (int i = 0; i < Main.listePlaylist.size(); i++) {
-                    if (Main.listePlaylist.get(i).getPlaylistName().equals(playlistName)) {
-                        Playlist playlist = Main.listePlaylist.get(i);
-                        return playlist;
-                    } else {
-                        System.out.println("Sorry, this playlist do not exist, please try again");
-                        System.out.println("Here are your playlists");
-                        Playlist.printAllPlaylist();
-                        playlistName = Menu.scanEntry();
+        while (true){
+            for (int i = 0; i < Main.listePlaylist.size(); i++) {
+                if (Main.listePlaylist.get(i).getPlaylistName().equals(playlistName)) {
+                    Playlist playlist = Main.listePlaylist.get(i);
+                    return playlist;
 
-                    }
+
                 }
             }
+            System.out.println("Your playlist was not found please retry");
+
         }
+
     }
 
 

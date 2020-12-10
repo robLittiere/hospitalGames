@@ -70,72 +70,126 @@ public class playlistLaunch {
 
                             }
                         else if (choice.equals("manage") || choice.equals("m")) {
-                            //Start managing playlists
-                            System.out.println("Enter --access-- to access a specific playlist and add or delete songs");
-                            System.out.println("Enter --create-- to create a playlist");
-                            System.out.println("Enter --clear-- to clear a playlist");
-                            System.out.println("Enter --delete--to delete a playlist ");
+                            while (true) {     //Start managing playlists
+                                System.out.println("Enter --access-- to access a specific playlist and add or delete songs");
+                                System.out.println("Enter --create-- to create a playlist");
+                                System.out.println("Enter --clear-- to clear a playlist");
+                                System.out.println("Enter --delete--to delete a playlist ");
+                                System.out.println("Enter --quit-- to go back to the main menu");
 
-                            choice = Menu.scanEntry();
-                            if(choice.equals("access") || choice.equals("a")){
 
-                                while(true){
-                                    System.out.println("Here you'll be able to add or delete songs");
-                                    System.out.println();
-                                    System.out.println("Here are your playlists");
-                                    System.out.println();
-                                    Playlist.printAllPlaylist();
-                                    System.out.println();
+                                choice = Menu.scanEntry();
 
-                                    System.out.println("Enter the name of the playlist you wish to modify");
-                                    String playlistName = Menu.scanEntry();
-                                    Playlist playlistUser = Playlist.findPlaylist(playlistName);
+                                if (choice.equals("quit") || choice.equals("q")){
+                                    break;
+                                }
 
-                                    System.out.println();
-                                    System.out.println("Very well, now enter --add-- or --delete-- to add or delete a song in " + playlistUser.getPlaylistName());
-                                    System.out.println("Enter --quit-- to go back to the previous menu");
-                                    choice = Menu.scanEntry();
+                                else if (choice.equals("access") || choice.equals("a")) {
 
-                                    if (choice.equals("quit") || choice.equals("q")){
-                                        break;
-
-                                    }
-
-                                    else if (choice.equals("add") || choice.equals("a")){
-                                        System.out.println("Let's add a song in " + playlistUser.getPlaylistName());
-                                        Song song = Song.createSong();
-                                        playlistUser.addSongs(song);
+                                    while (true) {
+                                        System.out.println("Here you'll be able to add or delete songs");
                                         System.out.println();
-                                        System.out.println(song.getSongName() + " by " + song.getAuthor() + " has been added to " + playlistUser.getPlaylistName());
-
-                                    }
-
-                                    else if (choice.equals("delete") || choice.equals("d")){
-                                        System.out.println("Let's delete a song from " + playlistUser.getPlaylistName());
+                                        System.out.println("Here are your playlists");
                                         System.out.println();
-                                        System.out.println("Here are all the songs in " + playlistUser.getPlaylistName());
+                                        Playlist.printAllPlaylist();
                                         System.out.println();
-                                        playlistUser.printAllSongs();
 
-                                        System.out.println("Please indicate the title of the song you wish to delete");
-                                        String songToDelete = Menu.scanEntry();
-                                        if (playlistUser.deleteSong(songToDelete)){
-                                            System.out.println(songToDelete + " has been deleted from your playlist " + playlistUser.getPlaylistName());
+                                        System.out.println("Enter the name of the playlist you wish to modify");
+                                        System.out.println("Enter --quit-- to go back to the previous menu");
+                                        String playlistName = Menu.scanEntry().toLowerCase();
+                                        if (playlistName.equals("quit") || playlistName.equals("q")) {
+                                            break;
+                                        }
+                                        Playlist playlistUser = Playlist.findPlaylist(playlistName);
+
+                                        System.out.println();
+                                        System.out.println("Very well, now enter --add-- or --delete-- to add or delete a song in " + playlistUser.getPlaylistName());
+                                        System.out.println("Enter --quit-- to go back to the previous menu");
+                                        choice = Menu.scanEntry();
+
+                                        if (choice.equals("quit") || choice.equals("q")) {
+                                            break;
+
+                                        } else if (choice.equals("add") || choice.equals("a")) {
+                                            System.out.println("Let's add a song in " + playlistUser.getPlaylistName());
+                                            Song song = Song.createSong();
+                                            playlistUser.addSongs(song);
+                                            System.out.println();
+                                            System.out.println(song.getSongName() + " by " + song.getAuthor() + " has been added to " + playlistUser.getPlaylistName());
+
+                                        } else if (choice.equals("delete") || choice.equals("d")) {
+                                            System.out.println("Let's delete a song from " + playlistUser.getPlaylistName());
+                                            System.out.println();
+                                            System.out.println("Here are all the songs in " + playlistUser.getPlaylistName());
+                                            System.out.println();
+                                            playlistUser.printAllSongs();
+
+                                            System.out.println("Please indicate the title of the song you wish to delete");
+                                            String songToDelete = Menu.scanEntry();
+                                            if (playlistUser.deleteSong(songToDelete)) {
+                                                System.out.println(songToDelete + " has been deleted from your playlist " + playlistUser.getPlaylistName());
+                                            }
                                         }
 
 
                                     }
 
+                                } else if (choice.equals("create") || choice.equals("c")) {
+                                    while (true) {
+                                        System.out.println("Here you can create a playlist");
+                                        System.out.println();
+                                        System.out.println("Enter the name of your playlist ");
+                                        System.out.println("You can go back to the previous menu by entering --quit--");
+                                        String playlistName = Menu.scanEntry();
 
+                                        if (playlistName.equals("quit") || playlistName.equals("q")) {
+                                            break;
+                                        }
 
+                                        Playlist playlist2 = new Playlist(playlistName);
+                                        Main.listePlaylist.add(playlist2);
+                                        System.out.println();
+                                        System.out.println("The playlist " + playlist2.getPlaylistName() + " has been added");
+                                    }
+                                } else if (choice.equals("clear") || choice.equals("cl")) {
+                                    while(true) {
+                                        System.out.println("Here are your playlists");
+                                        System.out.println();
+                                        Playlist.printAllPlaylist();
+                                        System.out.println();
+                                        System.out.println("You can enter the name of the playlist you wish to clear");
+                                        System.out.println("Or enter --quit-- to go back to the previous menu");
+                                        String playlistName = Menu.scanEntry();
+                                        if (playlistName.equals("quit") || playlistName.equals("q")) {
+                                            break;
+                                        }
+                                        Playlist playlistToClear = Playlist.findPlaylist(playlistName);
+                                        playlistToClear.clearPlaylist();
+                                        System.out.println("Your playlist " + playlistName + " has been cleared");
+                                    }
 
+                                } else if (choice.equals("delete") || choice.equals("d")) {
+                                    while(true) {
+                                        System.out.println("Here are your playlists");
+                                        System.out.println();
+                                        Playlist.printAllPlaylist();
+                                        System.out.println();
+                                        System.out.println("Enter the name of the playlist you wish to delete");
+                                        System.out.println("Enter --quit-- to go back to the previous menu");
+                                        String playlistName = Menu.scanEntry();
+                                        if(playlistName.equals("quit") || playlistName.equals("q")){
+                                            break;
+                                        }
+                                        Playlist playlistToDelete = Playlist.findPlaylist(playlistName);
+                                        playlistToDelete.deletePlaylist();
+                                        System.out.println("Your playlist " + playlistName + " has been deleted");
+                                    }
                                 }
 
                             }
 
-
                         }
-                        break;
+
                     }
                     break;
                 }

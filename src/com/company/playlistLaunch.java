@@ -1,9 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class playlistLaunch {
 
@@ -159,6 +156,7 @@ public class playlistLaunch {
 
     public static void play() {
         Playlist playlist = null;
+        List<Song> songs = null;
 
 
         Scanner scanner= new Scanner(System.in);
@@ -180,6 +178,7 @@ public class playlistLaunch {
                 if (Main.listePlaylist.get(i).getPlaylistName().equals(playlistName)){
                     playlistExist = true;
                     playlist = Main.listePlaylist.get(i);
+                    songs = playlist.getSongs();
                     break;
                 } else {
                     playlistExist = false;
@@ -215,7 +214,7 @@ public class playlistLaunch {
 
             } else if (userInput.toLowerCase().equals("random") || userInput.toLowerCase().equals("r")){
                 random = true;
-                indexSong = randomSong(playlist);
+                indexSong = randomSong(songs);
                 playlist.printCurrentSong(indexSong);
                 printMenuSong(random);
             }
@@ -232,12 +231,12 @@ public class playlistLaunch {
 
                 if (choose.toLowerCase().equals("next") || choose.toLowerCase().equals("n")){
                     if (random) {
-                        indexSong = randomSong(playlist);
+                        indexSong = randomSong(songs);
                         System.out.println("|-------------------------------|");
                         System.out.println();
                         playlist.printCurrentSong(indexSong);
-                    } else if (!random && indexSong < playlist.size() - 1){
-                        indexSong++;
+                    } else if (!random && indexSong < songs.size() -1){
+                        indexSong++ ;
                         System.out.println("|-------------------------------|");
                         playlist.printCurrentSong(indexSong);
                     } else {
@@ -251,7 +250,7 @@ public class playlistLaunch {
 
                 if (choose.toLowerCase().equals("prev") || choose.toLowerCase().equals("p")){
                     if (random) {
-                        indexSong = randomSong(playlist);
+                        indexSong = randomSong(songs);
                         System.out.println("|-------------------------------|");
                         playlist.printCurrentSong(indexSong);
                     } else if (!random && indexSong > 0){
@@ -305,11 +304,9 @@ public class playlistLaunch {
     }
 
 
-    private static int randomSong(Playlist playlist) {
-        double d =Math.random();
-        int n = (int)d;
-
-        n = (int)(Math.random() * playlist.size());
-        return n ;
+    private static int randomSong(List<Song> songs) {
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(songs.size());
+        return randomIndex;
     }
 }

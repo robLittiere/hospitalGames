@@ -30,7 +30,9 @@ public class Gameplay {
 
         //Place n°4:
         Place valley = new Place();
-        valley.setDesc("avavavvav");
+        valley.setDesc("Once you walked down the valley, you fell off a little cliff and you find yourself stuck, and you can not go back to the north.\n" +
+                "On your side is the river you saw earlier, and in a little pound made by this so called river, you see someone..\n" +
+                "Someone dead. A dead body is floating right beside you. Your fear make you get up, and run to the west.");
 
         //Place n°5:
         Place forest = new Place();

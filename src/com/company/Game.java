@@ -11,8 +11,7 @@ public class Game {
 
 
     public static String gameLaunch(String menu) throws IOException {
-        while (true)
-        {
+        while (true) {
             System.out.println("|--------------------------------------------------------------|");
             System.out.println();
             System.out.println("Welcome to our interactive story game, called Collosal Cave");
@@ -52,7 +51,7 @@ public class Game {
         Place startRm = theCave.createGame();
         thePlayer.setPlace(startRm);
 
-        /** Create the keyboard to control the game; we only need one */
+        /** Create the keyboard to control the game */
         BufferedReader keyboard  = new BufferedReader(new InputStreamReader(System.in));
 
         String inputString = "prepare";

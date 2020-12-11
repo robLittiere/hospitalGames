@@ -3,40 +3,32 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Place
-{
-    private String name;
+public class Place implements CaveSite{
     private String description;
-    private List<String> possibleDirection = new ArrayList<>();
 
-    public Place(String name, String description, List<String> direction)
-    {
-        this.name = name;
-        this.description = description;
-        this.possibleDirection = direction;
+    private CaveSite[] side = new CaveSite[4];
+
+    Place(){
+        side[0] = new Wall_Space();
+        side[1] = new Wall_Space();
+        side[2] = new Wall_Space();
+        side[3] = new Wall_Space();
     }
 
-    public String getName() {
-        return name;
+    public void setDesc(String d) {
+        description = d;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSide(int direction, CaveSite m) {
+        side[direction] = m;
     }
 
-    public String getDescription() {
-        return description;
+    public void enter(Player p) {
+        p.setLoc(this);
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void exit(int direction, Player p) {
+        side[direction].enter(p);
     }
 
-    public List<String> getPossibleDirection() {
-        return possibleDirection;
-    }
-
-    public void setPossibleDirection(List<String> possibleDirection) {
-        this.possibleDirection = possibleDirection;
-    }
 }

@@ -3,10 +3,6 @@ package com.company;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Scanner;
 
 public class Game {
 
@@ -17,13 +13,13 @@ public class Game {
     public static String gameLaunch(String menu) throws IOException {
         while (true)
         {
-            System.out.println("|----------------------------------------------------------------------------------------------------|");
+            System.out.println("|--------------------------------------------------------------|");
             System.out.println();
             System.out.println("Welcome to our interactive story game, called Collosal Cave");
             System.out.println("Please type the word --Play-- to begin a new game");
-            System.out.println("You can also type the word --continue-- to continue an older game, or press --q-- to exit this page.");
+            System.out.println("Press --q-- to exit this page.");
             System.out.println();
-            System.out.println("|----------------------------------------------------------------------------------------------------|");
+            System.out.println("|---------------------------------------------------------------|");
             String choice = Menu.scanEntry();
             if (choice.equals("quit") || choice.equals("q"))
             {
@@ -32,7 +28,7 @@ public class Game {
             }
             else if(choice.toLowerCase().equals("play") || choice.equals("p")) {
                 Game theGame = new Game();
-                theGame.startQuest();
+                theGame.startGame();
                 }
         }
         return menu;
@@ -50,7 +46,7 @@ public class Game {
         return theDirection;
     }
 
-    public void startQuest() throws IOException {
+    public void startGame() throws IOException {
         Player thePlayer = new Player();
         Gameplay theCave = new Gameplay();
         Place startRm = theCave.createGame();

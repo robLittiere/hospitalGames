@@ -23,8 +23,8 @@ public class Place implements CaveSite{
         return description;
     }
 
-    public void setSide(int direction, CaveSite m) {
-        side[direction] = m;
+    public void setSide(int direction, Place exit) {
+        side[direction] = exit;
     }
 
     public void enter(Player p) {

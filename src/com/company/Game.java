@@ -63,10 +63,12 @@ public class Game {
             int direction = 9;
 
             String description = thePlayer.getLoc().getDesc();
+            System.out.println("|---------------------------------------------------------------------------------------|\n");
             System.out.println(description);
             System.out.println();
             System.out.println("Which way (n,s,e,w,)," +
                     " or quit(q)?" + '\n');
+            System.out.println("|---------------------------------------------------------------------------------------|");
             inputString = keyboard.readLine();
             System.out.println('\n');
 

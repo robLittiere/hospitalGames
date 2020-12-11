@@ -14,7 +14,7 @@ public class Menu {
         System.out.println();
         System.out.println("Welcome to Hospital Games");
         System.out.println();
-        System.out.println("Here you will be able to play a game called proutprout and listen to music");
+        System.out.println("Here you will be able to play a game called Collosal Cave and listen to music");
         System.out.println();
         System.out.println("Please Enter the word --Playlist-- or --Game-- in order to start an activity ");
         System.out.println();
@@ -49,7 +49,7 @@ public class Menu {
 
     public static String scanEntry(){
         Scanner sc = new Scanner(System.in);
-        return sc.next();
+        return sc.next().toLowerCase();
 
     }
 }

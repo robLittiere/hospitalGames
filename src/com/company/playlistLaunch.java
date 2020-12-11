@@ -44,7 +44,7 @@ public class playlistLaunch {
                         }
                     }
 
-                    else{
+
                         System.out.println("|------------------------------------------------|");
                         System.out.println("Here are your playlists");
                         System.out.println();
@@ -191,7 +191,7 @@ public class playlistLaunch {
                                 }
                             }
                         }
-                    }
+
                     break;
                 }
             }

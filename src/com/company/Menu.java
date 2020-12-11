@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
@@ -7,7 +8,7 @@ public class Menu {
 
 
 
-    public static String LaunchGame(String menu){
+    public static String LaunchGame(String menu) throws IOException {
 
         System.out.println("|-------------------------------------------------------------------------------|");
         System.out.println();

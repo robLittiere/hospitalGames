@@ -66,10 +66,14 @@ public class Game {
             /* get next move */
             int direction = 9;
 
+            String description = thePlayer.getLoc().getDesc();
+            System.out.println(description);
+            System.out.println();
             System.out.println("Which way (n,s,e,w,)," +
                     " or quit(q)?" + '\n');
             inputString = keyboard.readLine();
             System.out.println('\n');
+
             if(inputString.equals("")) inputString = " ";
             char key = inputString.charAt(0);
             switch(key) {

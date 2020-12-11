@@ -19,6 +19,10 @@ public class Place implements CaveSite{
         description = d;
     }
 
+    public String getDesc(){
+        return description;
+    }
+
     public void setSide(int direction, CaveSite m) {
         side[direction] = m;
     }

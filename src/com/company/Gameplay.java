@@ -11,23 +11,33 @@ public class Gameplay {
 
         //Place n°1
         Place road = new Place();
-        road.setDesc("");
+        road.setDesc("rororoo");
 
         //Place n°2:
         Place hill = new Place();
-        hill.setDesc("");
+        hill.setDesc("ihhiihihi");
 
         //Place n°3:
         Place building = new Place();
-        building.setDesc("");
+        building.setDesc("bububuub");
 
         //Place n°4:
         Place valley = new Place();
-        valley.setDesc("");
+        valley.setDesc("avavavvav");
 
         //Place n°5:
         Place forest = new Place();
-        forest.setDesc("");
+        forest.setDesc("fofofoof");
+
+        road.setSide(0,forest);
+        forest.setSide(1,road);
+        road.setSide(1,valley);
+        valley.setSide(0,road);
+        road.setSide(2,building);
+        building.setSide(3,road);
+        road.setSide(3,hill);
+        valley.setSide(3,hill);
+        hill.setSide(0,forest);
 
         //Now return the entrance:
         entrance = road;
